@@ -1,0 +1,34 @@
+.main-section {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6px;
+  width: 300px;
+}
+
+.child-padding {
+  padding-left: 25px;
+}
+
+.folder {
+  cursor: pointer;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.inputContainer > span {
+  margin-top: 5px;
+}
+
+.inputContainer-input {
+  margin: 6px 0 0px 0;
+  padding: 5px;
+  display: flex;
+  border: 1px solid lightgray;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
