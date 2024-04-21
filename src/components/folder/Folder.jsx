@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Folder.css";
 
-const Folder = ({ explorer }) => {
+const Folder = ({ explorer, handleInertNode }) => {
   const [expand, setExpand] = useState(true);
 
   const [inputDetail, setInputDetail] = useState({
@@ -9,7 +9,7 @@ const Folder = ({ explorer }) => {
     isFolder: false,
   });
 
-  const { isFolder, name, items } = explorer;
+  const { isFolder, name, items, id } = explorer;
 
   const handleNewFolder = (e, isFolder) => {
     e.stopPropagation();
@@ -22,6 +22,7 @@ const Folder = ({ explorer }) => {
 
   const addNewFolderOrFile = (e) => {
     if (e.keyCode === 13 && e.target.value) {
+      handleInertNode(id, e.target.value, inputDetail.isFolder);
       setInputDetail({ ...inputDetail, isVisible: false });
     }
   };
@@ -70,7 +71,13 @@ const Folder = ({ explorer }) => {
           </div>
         )}
         {items.map((item) => {
-          return <Folder explorer={item} key={item.id} />;
+          return (
+            <Folder
+              handleInertNode={handleInertNode}
+              explorer={item}
+              key={item.id}
+            />
+          );
         })}
       </div>
     </div>
